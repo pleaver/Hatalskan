@@ -1,0 +1,22 @@
+1,10c1,10
+< Student,ID,Score,Percent
+<  ,stud1,5,100.00
+<  ,stud2,5,100.00
+<  ,stud3,5,100.00
+<  ,stud4,5,100.00
+< Total questions,5
+< Class average,5,100.00
+< Standard deviation,0.00
+< High Score,5
+< Low Score,5
+---
+> Student,ID,Score,Percent
+>  ,stud1,5,100.00
+>  ,stud2,5,100.00
+>  ,stud3,5,100.00
+>  ,stud4,5,100.00
+> Total questions,5
+> Class average,5,100.00
+> Standard deviation,0.00
+> High Score,5
+> Low Score,5

@@ -1,0 +1,62 @@
+1,30c1,30
+< Student,ID,Score,Percent
+<  ,stud1,18,90.00
+<  ,stud2,15,75.00
+<  ,stud3,19,95.00
+< Total questions,20
+< Class average,17,86.67
+< Standard deviation,1.73
+< High Score,19
+< Low Score,15
+< Question #,Missed count
+< 1,1
+< 2,0
+< 3,0
+< 4,0
+< 5,0
+< 6,0
+< 7,0
+< 8,0
+< 9,0
+< 10,0
+< 11,0
+< 12,0
+< 13,0
+< 14,0
+< 15,0
+< 16,1
+< 17,1
+< 18,1
+< 19,2
+< 20,2
+---
+> Student,ID,Score,Percent
+>  ,stud1,18,90.00
+>  ,stud2,15,75.00
+>  ,stud3,19,95.00
+> Total questions,20
+> Class average,17,86.67
+> Standard deviation,1.73
+> High Score,19
+> Low Score,15
+> Question #,Missed count
+> 1,1
+> 2,0
+> 3,0
+> 4,0
+> 5,0
+> 6,0
+> 7,0
+> 8,0
+> 9,0
+> 10,0
+> 11,0
+> 12,0
+> 13,0
+> 14,0
+> 15,0
+> 16,1
+> 17,1
+> 18,1
+> 19,2
+> 20,2

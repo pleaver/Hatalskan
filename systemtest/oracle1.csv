@@ -1,0 +1,15 @@
+Student,ID,Score,Percent
+ ,stud1,5,100.00
+ ,stud2,1,20.00
+ ,stud3,0,0.00
+Total questions,5
+Class average,2,40.00
+Standard deviation,2.16
+High Score,5
+Low Score,0
+Question #,Missed count
+1,1
+2,2
+3,2
+4,2
+5,2

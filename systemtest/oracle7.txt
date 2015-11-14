@@ -1,0 +1,16 @@
+Hatalskan V2.0 (rev num) by Door Guardians
+
+Command Argument Help:
+-v  Display version and team info
+-h  Display syntax help info
+-a  Write correct answers in PolyLearn feedback
+        If omitted, defaults to false
+-i  [Path to file(s) of scanned exams in PDF format]
+        Multiple files may be specified by a comma separated list
+        Accepts relative and absolute paths
+-p  [Path to the PolyLearn csv file] 
+        Accepts relative and absolute paths
+        If omitted, defaults to none
+-o  [Path to directory in which result files will be placed]
+        Accepts relative and absolute paths
+        If omitted, defaults to current directory

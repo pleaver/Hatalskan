@@ -1,0 +1,17 @@
+Comparing files oracle6.csv and HATALSKAN_POLYLEARN.CSV
+***** oracle6.csv
+One,Student,EB6DCCDC14D41E21400045474181C308,stud1@calpoly.edu,5.00,"1:A,2:B,3:C,4:D,5:E"
+Two,Student,8142B90AF3A21E014000418145470FEB,stud2@calpoly.edu,1.00,"1:A,2:A,3:A,4:A,5:A"
+Three,Student,E2AA120636A01E214000454741817943,stud3@calpoly.edu,0.00,"1:B,2:A,3:A,4:A,5:A"
+***** HATALSKAN_POLYLEARN.CSV
+One,Student,EB6DCCDC14D41E21400045474181C308,stud1@calpoly.edu,5.00,"1:A,2:B,3:C,4:D,5:E"
+One,Student,EB6DCCDC14D41E21400045474181C308,stud1@calpoly.edu,-,"Did not take exam"
+One,Student,EB6DCCDC14D41E21400045474181C308,stud1@calpoly.edu,-,"Did not take exam"
+Two,Student,8142B90AF3A21E014000418145470FEB,stud2@calpoly.edu,-,"Did not take exam"
+Two,Student,8142B90AF3A21E014000418145470FEB,stud2@calpoly.edu,1.00,"1:A,2:A,3:A,4:A,5:A"
+Two,Student,8142B90AF3A21E014000418145470FEB,stud2@calpoly.edu,-,"Did not take exam"
+Three,Student,E2AA120636A01E214000454741817943,stud3@calpoly.edu,-,"Did not take exam"
+Three,Student,E2AA120636A01E214000454741817943,stud3@calpoly.edu,-,"Did not take exam"
+Three,Student,E2AA120636A01E214000454741817943,stud3@calpoly.edu,0.00,"1:B,2:A,3:A,4:A,5:A"
+*****
+

@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- You may freely edit this file. See commented blocks below for -->
+<!-- some examples of how to customize the build. -->
+<!-- (If you delete it and reopen the project it will be recreated.) -->
+<!-- By default, only the Clean and Build commands use this build script. -->
+<!-- Commands such as Run, Debug, and Test only use this build script if -->
+<!-- the Compile on Save feature is turned off for the project. -->
+<!-- You can turn off the Compile on Save (or Deploy on Save) setting -->
+<!-- in the project's Project Properties dialog box.-->
+<project name="Hatalskan" default="default" basedir=".">
+    <description>Builds, tests, and runs the project UDAI.</description>
+    <import file="nbproject/build-impl.xml"/>
+    <!--
+
+    There exist several targets which are by default empty and which can be 
+    used for execution of your tasks. These targets are usually executed 
+    before and after some main targets. They are: 
+
+      -pre-init:                 called before initialization of project properties
+      -post-init:                called after initialization of project properties
+      -pre-compile:              called before javac compilation
+      -post-compile:             called after javac compilation
+      -pre-compile-single:       called before javac compilation of single file
+      -post-compile-single:      called after javac compilation of single file
+      -pre-compile-test:         called before javac compilation of JUnit tests
+      -post-compile-test:        called after javac compilation of JUnit tests
+      -pre-compile-test-single:  called before javac compilation of single JUnit test
+      -post-compile-test-single: called after javac compilation of single JUunit test
+      -pre-jar:                  called before JAR building
+      -post-jar:                 called after JAR building
+      -post-clean:               called after cleaning build products
+
+    (Targets beginning with '-' are not intended to be called on their own.)
+
+    Example of inserting an obfuscator after compilation could look like this:
+
+        <target name="-post-compile">
+            <obfuscate>
+                <fileset dir="${build.classes.dir}"/>
+            </obfuscate>
+        </target>
+
+    For list of available properties check the imported 
+    nbproject/build-impl.xml file. 
+
+
+    Another way to customize the build is by overriding existing main targets.
+    The targets of interest are: 
+
+      -init-macrodef-javac:     defines macro for javac compilation
+      -init-macrodef-junit:     defines macro for junit execution
+      -init-macrodef-debug:     defines macro for class debugging
+      -init-macrodef-java:      defines macro for class execution
+      -do-jar:                  JAR building
+      run:                      execution of project 
+      -javadoc-build:           Javadoc generation
+      test-report:              JUnit report generation
+
+    An example of overriding the target for project execution could look like this:
+
+        <target name="run" depends="UDAI-impl.jar">
+            <exec dir="bin" executable="launcher.exe">
+                <arg file="${dist.jar}"/>
+            </exec>
+        </target>
+
+    Notice that the overridden target depends on the jar target and not only on 
+    the compile target as the regular run target does. Again, for a list of available 
+    properties which you can use, check the target you are overriding in the
+    nbproject/build-impl.xml file. 
+
+    -->
+    
+    
+    <!--
+            =================
+            CHECKSTYLE SECTION
+            =================
+    -->
+    <target description="Run checkstyle on src directory." name="checkstyle">
+    <taskdef resource="checkstyletask.properties"
+        classpath="lib/308checks.jar;lib/checkstyle-all-4.4.jar"/>
+    <checkstyle config="nbproject/308style.xml" failOnViolation="true">
+        <!-- Specify includes and excludes -->
+        <fileset dir="src" includes="**/*.java"
+        excludes="**/udai/* **/userInterface/*"/>
+    </checkstyle>
+    </target>
+        
+    <!--
+        =================
+        LOC counter
+        =================
+    -->
+    <target description="Count Lines of Code in src directory." name="loc">
+                <java classname="textui.LOC"
+                classpath="lib/JavaLOC.jar"
+                fork="true">
+                <arg line="-r -d src"/>
+            </java>
+    </target>
+    
+    <!--
+                =================
+                SYSTEM TEST SECTION
+                =================
+    -->
+    <target depends="init,compile,jar" description="Run console-based system tests." name="systest">
+        <property name="systemtest.dir" value="systemtest"/>
+        
+        <!-- System Test 1 -->
+        <!-- Remove any results from previous test runs -->
+        <delete file="${systemtest.dir}/diffresult1.txt"/>
+        <delete file="${systemtest.dir}/error1.log"/>
+        <delete file="${systemtest.dir}/results1.out"/>
+        <echo message="running systest1"/>
+        <!-- Execute the console version of the app with test data -->
+        <java classname="${main.class}"
+            classpath="${dist.jar}"
+            fork="true"
+            output="${systemtest.dir}/results1.out"
+            error="${systemtest.dir}/error1.log">
+            <arg line="-i ${systemtest.dir}/testcase1.pdf -o ${systemtest.dir}"/>
+        </java>
+        <echo message="Comparing results1"/>
+        <!-- Run diff to evaluate results -->
+        <exec dir="${systemtest.dir}" executable="/usr/bin/diff" osfamily="unix"
+              output="diffresult1.txt" append="true">
+            <arg line="testcase1_scores.csv oracle1.csv"/>
+        </exec>
+        <exec dir="${systemtest.dir}" executable="fc" osfamily="windows"
+              output="${systemtest.dir}/diffresult1.txt" append="true">
+            <arg line="testcase1_scores.csv oracle1.csv"/>
+        </exec>
+        <!-- System Test 2 -->
+        <!-- Remove any results from previous test runs -->
+        <delete file="${systemtest.dir}/diffresult2.txt"/>
+        <delete file="${systemtest.dir}/error2.log"/>
+        <delete file="${systemtest.dir}/results1.out"/>
+        <echo message="running systest2"/>
+        <!-- Execute the console version of the app with test data 2 -->
+        <java classname="${main.class}"
+            classpath="${dist.jar}"
+            fork="true"
+            output="${systemtest.dir}/results1.out"
+            error="${systemtest.dir}/error2.log">
+            <arg line="-i ${systemtest.dir}/testcase2.pdf -o ${systemtest.dir}"/>
+        </java>
+        <echo message="Comparing results2"/>
+        <!-- Run diff to evaluate results -->
+        <exec dir="${systemtest.dir}" executable="/usr/bin/diff" osfamily="unix"
+              output="${systemtest.dir}/diffresult2.txt" append="true">
+            <arg line="testcase2_scores.csv oracle2.csv"/>
+        </exec>
+        <exec dir="${systemtest.dir}" executable="fc" osfamily="windows"
+              output="${systemtest.dir}/diffresult2.txt" append="true">
+            <arg line="testcase2_scores.csv oracle2.csv"/>
+        </exec>
+        <!-- System Test 4 -->
+        <!-- Remove any results from previous test runs -->
+        <delete file="${systemtest.dir}/diffresult4.txt"/>
+        <delete file="${systemtest.dir}/error4.log"/>
+        <delete file="${systemtest.dir}/results1.out"/>
+        <echo message="running systest4"/>
+        <!-- Execute the console version of the app with test data -->
+        <java classname="${main.class}"
+            classpath="${dist.jar}"
+            fork="true"
+            output="${systemtest.dir}/results1.out"
+            error="${systemtest.dir}/error4.log">
+            <arg line="-i ${systemtest.dir}/testLocation/testcase4.pdf -o ${systemtest.dir}/testDestination"/>
+        </java>
+        <echo message="Comparing results4"/>
+        <!-- Run diff to evaluate results -->
+        <exec dir="${systemtest.dir}" executable="/usr/bin/diff" osfamily="unix"
+              output="${systemtest.dir}/diffresult4.txt" append="true">
+            <arg line="/testDestination/testcase4_scores.csv oracle4.csv"/>
+        </exec>
+        <exec dir="${systemtest.dir}" executable="fc" osfamily="windows"
+              output="${systemtest.dir}/diffresult4.txt" append="true">
+            <arg line="oracle4.csv testDestination/testcase4_scores.csv"/>
+        </exec>
+        <!-- System Test 5 -->
+        <!-- Remove any results from previous test runs -->
+        <delete file="${systemtest.dir}/diffresult5.txt"/>
+        <delete file="${systemtest.dir}/error5.log"/>
+        <delete file="${systemtest.dir}/results1.out"/>
+        <echo message="running systest5"/>
+        <!-- Execute the console version of the app with test data -->
+        <java classname="${main.class}"
+            classpath="${dist.jar}"
+            fork="true"
+            output="${systemtest.dir}/results1.out"
+            error="${systemtest.dir}/error5.log">
+            <arg line="-i ${systemtest.dir}/testcase5-1.pdf,${systemtest.dir}/testcase5-2.pdf -o ${systemtest.dir}"/>
+        </java>
+        <echo message="Comparing results5"/>
+        <!-- Run diff to evaluate results -->
+        <exec dir="${systemtest.dir}" executable="/usr/bin/diff" osfamily="unix"
+              output="${systemtest.dir}/diffresult5.txt" append="true">
+            <arg line="Hatalskan_cumulative.csv oracle5.csv"/>
+        </exec>
+        <exec dir="${systemtest.dir}" executable="fc" osfamily="windows"
+              output="${systemtest.dir}/diffresult5.txt" append="true">
+            <arg line="Hatalskan_cumulative.csv oracle5.csv"/>
+        </exec>
+        <!-- System Test 6 -->
+        <!-- Remove any results from previous test runs -->
+        <delete file="${systemtest.dir}/diffresult6.txt"/>
+        <delete file="${systemtest.dir}/error6.log"/>
+        <delete file="${systemtest.dir}/results1.out"/>
+        <echo message="running systest6"/>
+        <!-- Execute the console version of the app with test data -->
+        <java classname="${main.class}"
+            classpath="${dist.jar}"
+            fork="true"
+            output="${systemtest.dir}/results1.out"
+            error="${systemtest.dir}/error6.log">
+            <arg line="-i ${systemtest.dir}/testcase1.pdf -o ${systemtest.dir} -p ${systemtest.dir}/testPolyLearn.csv"/>
+        </java>
+        <echo message="Comparing results6"/>
+        <!-- Run diff to evaluate results -->
+        <exec dir="${systemtest.dir}" executable="/usr/bin/diff" osfamily="unix"
+              output="${systemtest.dir}/diffresult6.txt" append="true">
+            <arg line="oracle6.csv Hatalskan_PolyLearn.csv"/>
+        </exec>
+        <exec dir="${systemtest.dir}" executable="fc" osfamily="windows"
+              output="${systemtest.dir}/diffresult6.txt" append="true">
+            <arg line="oracle6.csv Hatalskan_PolyLearn.csv"/>
+        </exec>
+        <!-- System Test 7 -->
+        <!-- Remove any results from previous test runs -->
+        <delete file="${systemtest.dir}/diffresult7.txt"/>
+        <delete file="${systemtest.dir}/error7.log"/>
+        <delete file="${systemtest.dir}/results1.out"/>
+        <echo message="running systest7"/>
+        <!-- Execute the console version of the app with test data -->
+        <java classname="${main.class}"
+            classpath="${dist.jar}"
+            fork="true"
+            output="${systemtest.dir}/results1.out"
+            error="${systemtest.dir}/error7.log">
+            <arg line="-v -h"/>
+        </java>
+        <replaceregexp file="${systemtest.dir}/results1.out"
+            match="(rev ...)"
+            replace="rev num"
+         />
+        <echo message="Comparing results7"/>
+        <!-- Run diff to evaluate results -->
+        <exec dir="${systemtest.dir}" executable="/usr/bin/diff" osfamily="unix"
+              output="${systemtest.dir}/diffresult7.txt" append="true">
+            <arg line="results1.out oracle7.txt"/>
+        </exec>
+        <exec dir="${systemtest.dir}" executable="fc" osfamily="windows"
+              output="${systemtest.dir}/diffresult7.txt" append="true">
+            <arg line="results1.out oracle7.txt"/>
+        </exec>
+        <!-- System Test 8 -->
+        <!-- Remove any results from previous test runs -->
+        <delete file="${systemtest.dir}/diffresult8.txt"/>
+        <delete file="${systemtest.dir}/error8.log"/>
+        <delete file="${systemtest.dir}/results1.out"/>
+        <echo message="running systest8"/>
+        <!-- Execute the console version of the app with test data -->
+        <java classname="${main.class}"
+            classpath="${dist.jar}"
+            fork="true"
+            output="${systemtest.dir}/results1.out"
+            error="${systemtest.dir}/error8.log">
+            <arg line="-i ${systemtest.dir}/testcase8-2.pdf -o ${systemtest.dir} -p ${systemtest.dir}/testPolyLearn.csv -a"/>
+        </java>
+        <echo message="Comparing results8"/>
+        <!-- Run diff to evaluate results -->
+        <exec dir="${systemtest.dir}" executable="/usr/bin/diff" osfamily="unix"
+              output="${systemtest.dir}/diffresult8.txt" append="true">
+            <arg line="oracle8.csv Hatalskan_PolyLearn.csv"/>
+        </exec>
+        <exec dir="${systemtest.dir}" executable="fc" osfamily="windows"
+              output="${systemtest.dir}/diffresult8.txt" append="true">
+            <arg line="oracle8.csv Hatalskan_PolyLearn.csv"/>
+        </exec>
+        
+        <!-- System Test 9 -->
+        <!-- Remove any results from previous test runs -->
+        <delete file="${systemtest.dir}/diffresult9.txt"/>
+        <delete file="${systemtest.dir}/error9.log"/>
+        <delete file="${systemtest.dir}/results1.out"/>
+        <echo message="running systest9"/>
+        <!-- Execute the console version of the app with test data -->
+        <java classname="${main.class}"
+            classpath="${dist.jar}"
+            fork="true"
+            output="${systemtest.dir}/results1.out"
+            error="${systemtest.dir}/error9.log">
+            <arg line="-i ${systemtest.dir}/testcase5-1.pdf,${systemtest.dir}/testcase5-2.pdf -o ${systemtest.dir}"/>
+        </java>
+        <echo message="Comparing results9"/>
+        <!-- Run diff to evaluate results -->
+        <exec dir="${systemtest.dir}" executable="/usr/bin/diff" osfamily="unix"
+              output="${systemtest.dir}/diffresult9.txt" append="true">
+            <arg line="Hatalskan_cumulative.csv oracle9.csv"/>
+        </exec>
+        <exec dir="${systemtest.dir}" executable="fc" osfamily="windows"
+              output="${systemtest.dir}/diffresult9.txt" append="true">
+            <arg line="oracle9.csv Hatalskan_cumulative.csv"/>
+        </exec>
+        
+    </target>
+    
+    <!--
+                =================
+                DEPLOY SECTION
+                =================
+    -->
+    <target name="deploy" depends="jar">
+
+        <!-- Change the value of this property to be the name of your JAR,
+             minus the .jar extension. It should not have spaces.
+             <property name="store.jar.name" value="MyJarName"/>
+        -->
+        <property name="deploy.jar.name" value="Hatalskan"/>
+
+                
+        <!-- don't edit below this line -->
+
+        <property name="deploy.dir" value="deploy"/>
+        <property name="deploy.jar" value="${deploy.dir}/${deploy.jar.name}.jar"/>
+
+        <echo message="Packaging ${application.title} into a single JAR at ${deploy.jar}"/>
+
+        <delete dir="${deploy.dir}"/>
+        <mkdir dir="${deploy.dir}"/>
+
+        <jar destfile="${deploy.dir}/temp_final.jar" filesetmanifest="skip">
+            <zipgroupfileset dir="dist" includes="*.jar"/>
+            <zipgroupfileset dir="dist/lib" includes="*.jar"/>
+
+            <manifest>
+                <attribute name="Main-Class" value="${main.class}"/>
+            </manifest>
+        </jar>
+
+        <zip destfile="${deploy.jar}">
+            <zipfileset src="${deploy.dir}/temp_final.jar"
+            excludes="META-INF/*.SF, META-INF/*.DSA, META-INF/*.RSA"/>
+        </zip>
+
+        <delete file="${deploy.dir}/temp_final.jar"/>
+
+    </target>
+    
+</project>

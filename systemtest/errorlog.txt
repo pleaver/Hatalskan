@@ -1,0 +1,48 @@
+May 31, 2015 2:59:34 PM org.apache.pdfbox.util.PDFStreamEngine processOperator
+INFO: unsupported/disabled operation: BDC
+May 31, 2015 2:59:35 PM org.apache.pdfbox.util.PDFStreamEngine processOperator
+INFO: unsupported/disabled operation: EMC
+May 31, 2015 2:59:36 PM org.apache.pdfbox.pdmodel.font.PDCIDFontType2Font getawtFont
+INFO: Can't read the embedded font ASJNGI+SimSun
+May 31, 2015 2:59:36 PM org.apache.pdfbox.pdmodel.font.PDCIDFontType2Font getawtFont
+INFO: Using font SimSun instead
+May 31, 2015 2:59:37 PM org.apache.pdfbox.util.PDFStreamEngine processOperator
+INFO: unsupported/disabled operation: BDC
+May 31, 2015 2:59:37 PM org.apache.pdfbox.util.PDFStreamEngine processOperator
+INFO: unsupported/disabled operation: EMC
+May 31, 2015 2:59:37 PM org.apache.pdfbox.pdmodel.font.PDCIDFontType2Font getawtFont
+INFO: Can't read the embedded font ASJNGI+SimSun
+May 31, 2015 2:59:37 PM org.apache.pdfbox.pdmodel.font.PDCIDFontType2Font getawtFont
+INFO: Using font SimSun instead
+May 31, 2015 2:59:38 PM org.apache.pdfbox.util.PDFStreamEngine processOperator
+INFO: unsupported/disabled operation: BDC
+May 31, 2015 2:59:38 PM org.apache.pdfbox.util.PDFStreamEngine processOperator
+INFO: unsupported/disabled operation: EMC
+May 31, 2015 2:59:38 PM org.apache.pdfbox.pdmodel.font.PDCIDFontType2Font getawtFont
+INFO: Can't read the embedded font ASJNGI+SimSun
+May 31, 2015 2:59:38 PM org.apache.pdfbox.pdmodel.font.PDCIDFontType2Font getawtFont
+INFO: Using font SimSun instead
+May 31, 2015 2:59:42 PM org.apache.pdfbox.util.PDFStreamEngine processOperator
+INFO: unsupported/disabled operation: BDC
+May 31, 2015 2:59:42 PM org.apache.pdfbox.util.PDFStreamEngine processOperator
+INFO: unsupported/disabled operation: EMC
+May 31, 2015 2:59:42 PM org.apache.pdfbox.pdmodel.font.PDCIDFontType2Font getawtFont
+INFO: Can't read the embedded font ASJNGI+SimSun
+May 31, 2015 2:59:42 PM org.apache.pdfbox.pdmodel.font.PDCIDFontType2Font getawtFont
+INFO: Using font SimSun instead
+May 31, 2015 2:59:43 PM org.apache.pdfbox.util.PDFStreamEngine processOperator
+INFO: unsupported/disabled operation: BDC
+May 31, 2015 2:59:43 PM org.apache.pdfbox.util.PDFStreamEngine processOperator
+INFO: unsupported/disabled operation: EMC
+May 31, 2015 2:59:43 PM org.apache.pdfbox.pdmodel.font.PDCIDFontType2Font getawtFont
+INFO: Can't read the embedded font ASJNGI+SimSun
+May 31, 2015 2:59:43 PM org.apache.pdfbox.pdmodel.font.PDCIDFontType2Font getawtFont
+INFO: Using font SimSun instead
+May 31, 2015 2:59:44 PM org.apache.pdfbox.util.PDFStreamEngine processOperator
+INFO: unsupported/disabled operation: BDC
+May 31, 2015 2:59:44 PM org.apache.pdfbox.util.PDFStreamEngine processOperator
+INFO: unsupported/disabled operation: EMC
+May 31, 2015 2:59:44 PM org.apache.pdfbox.pdmodel.font.PDCIDFontType2Font getawtFont
+INFO: Can't read the embedded font ASJNGI+SimSun
+May 31, 2015 2:59:44 PM org.apache.pdfbox.pdmodel.font.PDCIDFontType2Font getawtFont
+INFO: Using font SimSun instead
